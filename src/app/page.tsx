@@ -1,4 +1,6 @@
 import Image from "next/image";
+import FadeIn from "@/components/FadeIn";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -30,30 +32,38 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero */}
         <section className="px-8 py-28 max-w-5xl mx-auto">
-          <p className="text-sm font-semibold tracking-widest uppercase mb-6" style={{ color: "var(--navy)" }}>
-            Technology Consultancy
-          </p>
-          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900 max-w-3xl">
-            Engineering-led technology, built to last.
-          </h1>
-          <p className="mt-6 text-lg text-neutral-500 max-w-xl leading-relaxed">
-            Hexprop Consulting designs and builds data systems, infrastructure, and applications for businesses across engineering, manufacturing, retail, and beyond.
-          </p>
-          <div className="mt-10 flex items-center gap-4">
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-full text-white text-sm font-medium transition-colors hover:opacity-90"
-              style={{ backgroundColor: "var(--navy)" }}
-            >
-              Work with us
-            </a>
-            <a
-              href="#services"
-              className="px-6 py-3 rounded-full text-sm font-medium text-neutral-700 border border-neutral-200 hover:border-neutral-400 transition-colors"
-            >
-              Our services
-            </a>
-          </div>
+          <FadeIn>
+            <p className="text-sm font-semibold tracking-widest uppercase mb-6" style={{ color: "var(--navy)" }}>
+              Technology Consultancy
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900 max-w-3xl">
+              Engineering-led technology, built to last.
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="mt-6 text-lg text-neutral-500 max-w-xl leading-relaxed">
+              Hexprop Consulting designs and builds data systems, infrastructure, and applications for businesses across engineering, manufacturing, retail, and beyond.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.3}>
+            <div className="mt-10 flex items-center gap-4">
+              <a
+                href="#contact"
+                className="px-6 py-3 rounded-full text-white text-sm font-medium transition-colors hover:opacity-90"
+                style={{ backgroundColor: "var(--navy)" }}
+              >
+                Work with us
+              </a>
+              <a
+                href="#services"
+                className="px-6 py-3 rounded-full text-sm font-medium text-neutral-700 border border-neutral-200 hover:border-neutral-400 transition-colors"
+              >
+                Our services
+              </a>
+            </div>
+          </FadeIn>
         </section>
 
         {/* Divider */}
@@ -61,12 +71,14 @@ export default function Home() {
 
         {/* Services */}
         <section id="services" className="px-8 py-24 max-w-5xl mx-auto">
-          <p className="text-sm font-semibold tracking-widest uppercase mb-10 text-neutral-400">
-            What we do
-          </p>
+          <FadeIn>
+            <p className="text-sm font-semibold tracking-widest uppercase mb-10 text-neutral-400">
+              What we do
+            </p>
+          </FadeIn>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {services.map((s) => (
-              <div key={s.title}>
+            {services.map((s, i) => (
+              <FadeIn key={s.title} delay={i * 0.1}>
                 <div
                   className="w-10 h-10 rounded-lg mb-5 flex items-center justify-center"
                   style={{ backgroundColor: "var(--navy)" }}
@@ -75,7 +87,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-2">{s.title}</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed">{s.description}</p>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </section>
@@ -85,27 +97,29 @@ export default function Home() {
 
         {/* About */}
         <section id="about" className="px-8 py-24 max-w-5xl mx-auto">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-neutral-400">
-              About us
-            </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-900 mb-5">
-              Built on real-world engineering experience.
-            </h2>
-            <p className="text-neutral-500 leading-relaxed mb-4">
-              We come from engineering, manufacturing, retail, and embedded systems — industries where the cost of getting technology wrong is real and visible. That background shapes how we work: practically, precisely, and with a clear focus on outcomes.
-            </p>
-            <p className="text-neutral-500 leading-relaxed mb-8">
-              From data pipelines and cloud infrastructure to custom applications and embedded firmware, we bring the technical depth to deliver — and the cross-industry experience to ask the right questions first.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {["Engineering", "Manufacturing", "Retail", "Data & Analytics", "Embedded Systems", "Supply Chain"].map((sector) => (
-                <span key={sector} className="px-4 py-2 rounded-full text-sm font-medium border text-neutral-600 border-neutral-200">
-                  {sector}
-                </span>
-              ))}
+          <FadeIn>
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-neutral-400">
+                About us
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight text-neutral-900 mb-5">
+                Built on real-world engineering experience.
+              </h2>
+              <p className="text-neutral-500 leading-relaxed mb-4">
+                We come from engineering, manufacturing, retail, and embedded systems — industries where the cost of getting technology wrong is real and visible. That background shapes how we work: practically, precisely, and with a clear focus on outcomes.
+              </p>
+              <p className="text-neutral-500 leading-relaxed mb-8">
+                From data pipelines and cloud infrastructure to custom applications and embedded firmware, we bring the technical depth to deliver — and the cross-industry experience to ask the right questions first.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Engineering", "Manufacturing", "Retail", "Data & Analytics", "Embedded Systems", "Supply Chain"].map((sector) => (
+                  <span key={sector} className="px-4 py-2 rounded-full text-sm font-medium border text-neutral-600 border-neutral-200">
+                    {sector}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
         {/* Divider */}
@@ -113,43 +127,20 @@ export default function Home() {
 
         {/* Contact */}
         <section id="contact" className="px-8 py-24 max-w-5xl mx-auto">
-          <div className="max-w-xl">
-            <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-neutral-400">
-              Contact
-            </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-900 mb-5">
-              Start a conversation.
-            </h2>
-            <p className="text-neutral-500 leading-relaxed mb-10">
-              Tell us about your challenge and we'll come back to you with a considered response — no sales pitch, just an honest assessment of how we can help.
-            </p>
-            <form className="flex flex-col gap-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="px-4 py-3 rounded-lg border border-neutral-200 text-sm outline-none focus:border-neutral-400 transition-colors"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="px-4 py-3 rounded-lg border border-neutral-200 text-sm outline-none focus:border-neutral-400 transition-colors"
-                />
-              </div>
-              <textarea
-                rows={4}
-                placeholder="How can we help?"
-                className="px-4 py-3 rounded-lg border border-neutral-200 text-sm outline-none focus:border-neutral-400 transition-colors resize-none"
-              />
-              <button
-                type="submit"
-                className="self-start px-6 py-3 rounded-full text-white text-sm font-medium transition-opacity hover:opacity-90"
-                style={{ backgroundColor: "var(--navy)" }}
-              >
-                Send message
-              </button>
-            </form>
-          </div>
+          <FadeIn>
+            <div className="max-w-xl">
+              <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-neutral-400">
+                Contact
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight text-neutral-900 mb-5">
+                Start a conversation.
+              </h2>
+              <p className="text-neutral-500 leading-relaxed mb-10">
+                Tell us about your challenge and we'll come back to you with a considered response — no sales pitch, just an honest assessment of how we can help.
+              </p>
+              <ContactForm />
+            </div>
+          </FadeIn>
         </section>
       </main>
 
